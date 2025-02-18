@@ -39,7 +39,7 @@ def retrieve_relevant_text(query, index, text_chunks, model, top_k=5):
 
 def query_free_llm(prompt, model):
     url = f"https://api-inference.huggingface.co/models/{model}"
-    headers = {"Authorization": f"Bearer {os.getenv('HUGGINGFACE_API_KEY')}"}
+    headers = {"Authorization": f"Bearer {st.secrets['HUGGINGFACE_API_KEY']}"}
     data = {"inputs": prompt}
     response = requests.post(url, headers=headers, json=data)
     return response.json()[0].get('summary_text', "Error in response") if response.status_code == 200 else "Error in response"
