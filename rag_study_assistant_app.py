@@ -42,8 +42,9 @@ uploaded_file = st.file_uploader("Upload your subject PDF", type=["pdf"])
 
 if uploaded_file is not None:
     text = extract_text_from_pdf(uploaded_file)
-    image_text = extract_text_from_images(uploaded_file)
-    full_text = text + "\n" + image_text
+    '''image_text = extract_text_from_images(uploaded_file)'''
+    full_text = text + "\n"
+        '''+ image_text'''
     
     st.write("### Extracted Text Preview")
     st.text_area("Text", full_text[:1000], height=200)
